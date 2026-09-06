@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sun Public School | Nurturing Young Minds</title>
+  <meta name="description" content="Sun Public School - Quality Education from Nursery to Class 10. Modern classrooms, lab facilities, and sports.">
+  
+  <!-- Google Fonts: Serif for school identity + Sans for clean UI -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lora:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #333333;
+      background-color: #f8fafc;
+      line-height: 1.6;
+    }
+
+    /* Top Quick Announcement Bar */
+    .top-bar {
+      background-color: #1e3a8a;
+      color: #f8fafc;
+      font-size: 0.8rem;
+      padding: 7px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .top-bar a {
+      color: #fde047;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Header & Logo */
+    header {
+      background: #ffffff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 12px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .school-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .crest {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #b91c1c, #991b1b);
+      border: 2px solid #ca8a04;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      box-shadow: 0 2px 6px rgba(185, 28, 28, 0.35);
+    }
+
+    .brand-title {
+      font-family: 'Lora', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #a31d1d;
+      letter-spacing: -0.3px;
+    }
+
+    .brand-subtitle {
+      display: block;
+      font-size: 0.65rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    /* Navigation Menu */
+    .menu-toggle {
+      background: none;
+      border: none;
+      font-size: 1.7rem;
+      color: #334155;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      padding: 12px 20px;
+    }
+
+    .nav-links.active {
+      display: flex;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #1e293b;
+      font-weight: 600;
+      padding: 10px 0;
+      font-size: 0.95rem;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    /* Hero Banner */
+    .hero {
+      position: relative;
+      background: #0f172a;
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.1) 40%, rgba(15, 23, 42, 0.85) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px 18px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      align-self: flex-start;
+      background-color: #facc15;
+      color: #854d0e;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
+      font-family: 'Lora', serif;
+      color: #ffffff;
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    /* Signature Highlight Cards (Doon-style) */
+    .feature-cards {
+      max-width: 1100px;
+      margin: -24px auto 0 auto;
+      padding: 0 16px;
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .value-card {
+      background: #ffffff;
+      padding: 18px 22px;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      border-left: 5px solid #1e3a8a;
+      text-decoration: none;
+      display: block;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .value-card:active {
+      transform: scale(0.99);
+    }
+
+    .value-card:nth-child(2) {
+      border-left-color: #a31d1d;
+    }
+
+    .value-card:nth-child(3) {
+      border-left-color: #d97706;
+    }
+
+    .value-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 2px;
+    }
+
+    .value-card:nth-child(2) h3 {
+      color: #a31d1d;
+    }
+
+    .value-card:nth-child(3) h3 {
+      color: #1e3a8a;
+    }
+
+    .card-link {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #64748b;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Content Sections */
+    .section-container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 18px;
+    }
+
+    .section-header {
+      margin-bottom: 20px;
+    }
+
+    .section-header h2 {
+      font-family: 'Lora', serif;
+      font-size: 1.6rem;
+      color: #0f172a;
+    }
+
+    .section-header p {
+      color: #64748b;
+      font-size: 0.9rem;
+      margin-top: 4px;
+    }
+
+    /* About Section Grid */
+    .about-box {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 22px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+      margin-bottom: 24px;
+    }
+
+    .about-box p {
+      font-size: 0.95rem;
+      color: #475569;
+      margin-bottom: 14px;
+    }
+
+    .checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: #334155;
+    }
+
+    .checklist li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .check-icon {
+      color: #15803d;
+      font-weight: bold;
+    }
+
+    /* Form Section */
+    .form-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      border-top: 4px solid #a31d1d;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #334155;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 5px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .form-control:focus {
+      border-color: #1e3a8a;
+      box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.15);
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: #a31d1d;
+      color: #ffffff;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-submit:hover {
+      background: #881313;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #0f172a;
+      color: #94a3b8;
+      padding: 30px 18px 20px 18px;
+      margin-top: 50px;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    footer p {
+      margin-bottom: 6px;
+    }
+
+    /* Tablet & Desktop Adjustments */
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+        flex-direction: row;
+        gap: 24px;
+        border: none;
+        padding: 0;
+      }
+      .nav-links a {
+        border: none;
+        padding: 0;
+      }
+      .menu-toggle {
+        display: none;
+      }
+      .hero-img {
+        height: 480px;
+      }
+      .feature-cards {
+        flex-direction: row;
+      }
+      .value-card {
+        flex: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Contact Announcement -->
+  <div class="top-bar">
+    <span>Admissions Open: Nursery to Class 10</span>
+    <a href="#admission">Apply Online &rarr;</a>
+  </div>
+
+  <!-- Header with School Identity -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="school-brand">
+        <div class="crest">S</div>
+        <div>
+          <span class="brand-title">Sun Public School</span>
+          <span class="brand-subtitle">Nursery to Class X</span>
+        </div>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">☰</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#values">Our Values</a>
+        <a href="#academics">Academics</a>
+        <a href="#admission">Admissions</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <!-- Clean high-res hero image featuring teacher and student -->
+    <img class="hero-img" 
+         src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1400&q=80" 
+         alt="Teacher interacting with student in classroom">
+    <div class="hero-overlay">
+      <span class="hero-tag">Excellence in Education</span>
+      <h1 class="hero-title">Inspiring Young Minds, Building Future Leaders</h1>
+    </div>
+  </section>
+
+  <!-- Signature Doon-Style Floating Cards -->
+  <div class="feature-cards" id="values">
+    <a href="#about" class="value-card">
+      <h3>Our Values</h3>
+      <span class="card-link">Learn More &rarr;</span>
+    </a>
+    <a href="#academics" class="value-card">
+      <h3>Nurturing Success</h3>
+      <span class="card-link">Learn More &rarr;</span>
+    </a>
+    <a href="#admission" class="value-card">
+      <h3>Why Choose Sun Public School ?</h3>
+      <span class="card-link">Learn More &rarr;</span>
+    </a>
+  </div>
+
+  <!-- About Section -->
+  <main class="section-container" id="about">
+    <div class="section-header">
+      <h2>Welcome to Sun Public School</h2>
+      <p>Building a strong academic foundation with care and discipline.</p>
+    </div>
+
+    <div class="about-box">
+      <p>
+        Sun Public School is committed to providing quality education from early childhood (Nursery) through secondary graduation (Class 10). We create a learning space where students develop academic competence, confidence, and respect for others.
+      </p>
+      <ul class="checklist">
+        <li><span class="check-icon">&#10003;</span> Dedicated teachers and individual student mentorship</li>
+        <li><span class="check-icon">&#10003;</span> Computer laboratory and activity-based STEM learning</li>
+        <li><span class="check-icon">&#10003;</span> Sports, cultural functions, and regular parent-teacher reviews</li>
+        <li><span class="check-icon">&#10003;</span> Safe campus environment with monitored grounds</li>
+      </ul>
+    </div>
+
+    <!-- Admission Form Section -->
+    <div class="form-card" id="admission">
+      <div class="section-header" style="margin-bottom: 16px;">
+        <h2 style="font-size: 1.4rem;">Admission Inquiry (2026–2027)</h2>
+        <p>Fill out the details below, and our administration office will contact you.</p>
+      </div>
+
+      <form onsubmit="event.preventDefault(); alert('Inquiry submitted successfully! The school office will contact you.');">
+        <div class="form-group">
+          <label for="pname">Parent / Guardian Name</label>
+          <input type="text" id="pname" class="form-control" required placeholder="Enter full name">
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" class="form-control" pattern="[0-9]{10}" required placeholder="10-digit mobile number">
+        </div>
+
+        <div class="form-group">
+          <label for="grade">Select Class</label>
+          <select id="grade" class="form-control" required>
+            <option value="">-- Choose Class --</option>
+            <option>Pre-Primary (Nursery / LKG / UKG)</option>
+            <option>Primary School (Class 1 to 5)</option>
+            <option>Middle School (Class 6 to 8)</option>
+            <option>Secondary School (Class 9 & 10)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-submit">Submit Inquiry</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <p><strong>Sun Public School</strong></p>
+    <p>Nursery to Class 10 | Campus Area, Jharkhand</p>
+    <p style="margin-top: 10px; font-size: 0.75rem; color: #64748b;">&copy; 2026 Sun Public School. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Mobile navigation toggle
+    const toggle = document.getElementById('menuToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      links.classList.toggle('active');
+    });
+
+    // Close menu when a link is tapped
+    document.querySelectorAll('.nav-links a').forEach(item => {
+      item.addEventListener('click', () => {
+        links.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+  </html>
+  
